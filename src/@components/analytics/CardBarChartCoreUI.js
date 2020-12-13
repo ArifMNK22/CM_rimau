@@ -9,7 +9,7 @@ export default (props) => {
     const options = {
         animationEnabled: true,
         theme: "light2",
-        height: 120,
+        height: 180,
         // axisX:{
         //     valueFormatString: "MMM",
         //     crosshair: {
