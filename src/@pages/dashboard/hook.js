@@ -9,6 +9,8 @@ import moment from 'moment';
 export default () => {
     const [is_loading, set_is_loading] = useState(false);
     const history = useHistory();
+    
+    const [allProgress, set_allProgress] = useState([]);
     const [emergencyByDepartment, set_emergencyByDepartment] = useState({});
     const [emergencyMonthly, set_emergencyMonthly] = useState({});
     const [totalChanges, set_totalChanges] = useState([]);
@@ -75,6 +77,15 @@ export default () => {
                 break;
         }
         // END Setup Total Changes
+
+        // Setup Progress Card (NOT COMPLETE YET)
+        set_allProgress([
+            {name: 'Total Changes', value: 44},
+            {name: 'Emergency/Urgent', value: 30},
+            {name: 'Failed Fallback', value: 70},
+            {name: 'Non Compliant', value: 50},
+        ]);
+        // END Setup Progress Card
     }, [totalChanges_groupby, totalChanges]);
     // END Use Effect For Data Constructing
 
@@ -102,5 +113,6 @@ export default () => {
         set_totalChanges_groupby,
         emergencyByDepartment,
         emergencyMonthly,
+        allProgress,
     };
 };
