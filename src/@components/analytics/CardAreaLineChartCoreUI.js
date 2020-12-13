@@ -11,14 +11,17 @@ export default (props) => {
   let dataPoints = [];
   switch (h.totalChanges_groupby) {
     case 'Day':
-      dataPoints = h[`${datakey}`].data?.map((xcp,idx) => ({ x: new Date(2016, moment().month(),idx), y: xcp }));
+      dataPoints = h[`${datakey}`].data?.map((xcp,idx) => ({ x: new Date(moment().year(), moment().month(),idx), y: xcp }));
       break;
     case 'Month':
-      dataPoints = h[`${datakey}`].data?.map((xcp,idx) => ({ x: new Date(2016, idx), y: xcp }));
+      dataPoints = h[`${datakey}`].data?.map((xcp,idx) => ({ x: new Date(moment().year(), idx), y: xcp }));
+      break;
+    case 'Year':
+      // add logic here
       break;
   
     default:
-      dataPoints = h[`${datakey}`].data?.map((xcp,idx) => ({ x: new Date(2016, idx), y: xcp }));
+      dataPoints = h[`${datakey}`].data?.map((xcp,idx) => ({ x: new Date(moment().year(), idx), y: xcp }));
       break;
   }
   const options = {
