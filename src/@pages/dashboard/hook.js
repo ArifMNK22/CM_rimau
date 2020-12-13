@@ -45,7 +45,6 @@ export default () => {
         emergencyTRUE.forEach(n => {
             MonthlyEm[parseInt(n.date.format('M'))-1].y = MonthlyEm[parseInt(n.date.format('M'))-1].y? 
             MonthlyEm[parseInt(n.date.format('M'))-1].y+ 1 : 1;
-            console.log('MonthlyEm',MonthlyEm)
         });
         set_emergencyMonthly({
             labels: moment.months(),
@@ -89,11 +88,12 @@ export default () => {
     }, [totalChanges_groupby, totalChanges]);
     // END Use Effect For Data Constructing
 
-    //   this is use effect for initialization (run once) (change your data source here) (change the t= value just incase it cache)
+    // this is use effect for initialization (run once) (change your data source here) 
+    // (always change the t= value just incase github got cache)
     useEffect(()=>{
         const endpoint =  endpoints.getStaticData();
         console.log('endpoint',endpoint[1])
-        fetch(`${endpoint[1]}Monthly Copy - Raw.csv?t=asdasdasad`, { method: endpoint[0]})
+        fetch(`${endpoint[1]}Monthly Copy - Raw.csv?t=${moment().unix()}`, { method: endpoint[0]})
         .then(response => response.text())
         .then(result => {
             const {headers, rows} = csvJSON(result)

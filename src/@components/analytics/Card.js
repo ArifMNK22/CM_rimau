@@ -3,7 +3,6 @@ import { CContainer, CRow, CCol, CCard, CCardHeader, CCardBody } from '@coreui/r
 
 export default (props) => {
     const { Header, Body } = props;
-    console.log(Header)
   return (
     <CContainer fluid>
     <CRow>

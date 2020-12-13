@@ -88,10 +88,9 @@ export default (props) => {
             (item, index)=>(
               <CCollapse show={details.includes(index)}>
                 <CCardBody>
-                  {Object.keys(item).map((keys,idx)=>{
-                    console.log('dump',item[keys])
-                    return <p key={idx} className="text-muted">{keys}: {(typeof item[keys] === 'object')? JSON.stringify(item[keys]): item[keys]}</p>
-                  })}
+                  {Object.keys(item).map((keys,idx)=>
+                  (<p key={idx} className="text-muted">{keys}: {(typeof item[keys] === 'object')? JSON.stringify(item[keys]): item[keys]}</p>)
+                  )}
                 </CCardBody>
               </CCollapse>
             )
